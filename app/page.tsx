@@ -68,9 +68,7 @@ export default function LandingPage() {
     setIsLoading(false);
   };
 
-  const triggerError = () => {
-    throw new Error("This is a test component error!");
-  };
+  
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
@@ -82,13 +80,6 @@ export default function LandingPage() {
       </div>
 
       {/* Hero Section */}
-      <button
-        onClick={triggerError}
-        className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-      >
-        Trigger Component Error
-      </button>
-
       <section className="relative py-24 px-4 max-w-6xl mx-auto text-center">
         <motion.div
           initial="hidden"
