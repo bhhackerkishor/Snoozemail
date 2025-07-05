@@ -64,7 +64,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased w-full overflow-x-hidden`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased `}
         >
           <Navbar />
           <ErrorBoundary>{children}</ErrorBoundary>
