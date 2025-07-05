@@ -1,12 +1,17 @@
-import connectToDB from "@/lib/db";
-import Blog from "@/lib/model/blog";
-import ReactMarkdown from "react-markdown";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
+// app/(legal)/blog/[slug]/page.tsx
+import connectToDB from '@/lib/db';
+import Blog from '@/lib/model/blog';
+import ReactMarkdown from 'react-markdown';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
-// Define blog type without any constraints
-type BlogType = {
+/** 👈 1. Tell Next what your dynamic segment looks like */
+export type PageParams = {
+  slug: string;
+};
+
+type Blog = {
   _id: string;
   title: string;
   description: string;
@@ -16,62 +21,42 @@ type BlogType = {
   readTime?: string;
   ogImage?: string;
   imageAlt?: string;
-  author?: {
-    name: string;
-    avatar?: string;
-    bio?: string;
-  };
+  author?: { name: string; avatar?: string; bio?: string };
 };
 
-// Metadata generator
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: { slug: string } 
-}): Promise<Metadata> {
+/** 2. Let Next infer the full props type — do NOT annotate it manually */
+export async function generateMetadata(
+  { params }: { params: PageParams }
+): Promise<Metadata> {
   await connectToDB();
-  const post = await Blog.findOne({ slug: params.slug }).lean() as BlogType | null;
-  
-  if (!post) return {
-    title: "Page Not Found",
-    description: "The requested blog post could not be found"
-  };
-
+  const post = (await Blog.findOne({ slug: params.slug }).lean()) as Blog | null;
+  if (!post) return {};
   return {
     title: post.title,
     description: post.description,
-    openGraph: {
-      images: [post.ogImage || "/default-og.png"],
-    },
+    openGraph: { images: [post.ogImage || '/default-og.png'] },
   };
 }
 
-// Main component with explicit typing
-export default async function BlogPostPage({
-  params
-}: {
-  params: { slug: string }
-}) {
+/** 3. Do the same here */
+export default async function Page(
+  { params }: { params: PageParams }
+) {
   await connectToDB();
-  const blog = await Blog.findOne({ slug: params.slug }).lean() as BlogType | null;
-  
-  if (!blog) {
-    return notFound();
-  }
+  const blog = (await Blog.findOne({ slug: params.slug }).lean()) as Blog | null;
+  if (!blog) return notFound();
 
   return (
     <article className="max-w-3xl mx-auto p-4">
       <Image
-        src={blog.ogImage || "/default-og.png"}
+        src={blog.ogImage || '/default-og.png'}
         alt={blog.imageAlt || blog.title}
         width={1200}
         height={600}
         className="w-full rounded-lg mb-6"
-        priority
       />
-      
       <h1 className="text-4xl font-bold mb-2">{blog.title}</h1>
-      
+
       <div className="text-sm text-gray-500 mb-4 flex flex-wrap gap-4">
         <span>{new Date(blog.date).toLocaleDateString()}</span>
         <span>•</span>
@@ -104,9 +89,7 @@ export default async function BlogPostPage({
         </div>
       )}
 
-      <div className="prose dark:prose-invert max-w-none">
-        <ReactMarkdown>{blog.content}</ReactMarkdown>
-      </div>
+      <ReactMarkdown>{blog.content}</ReactMarkdown>
     </article>
   );
 }
