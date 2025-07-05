@@ -5,6 +5,9 @@ import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
+
+
+
 type Blog = {
   _id: string;
   title: string;
@@ -19,9 +22,8 @@ type Blog = {
 };
 
 /** 2. Let Next infer the full props type — do NOT annotate it manually */
-export async function generateMetadata(
-  { params }: { params: PageParams }
-){
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
   await connectToDB();
   const post = (await Blog.findOne({ slug: params.slug }).lean()) as Blog | null;
   if (!post) return {};
@@ -33,9 +35,7 @@ export async function generateMetadata(
 }
 
 /** 3. Do the same here */
-export default async function Page(
-  { params }: { params: PageParams }
-) {
+export default async function Page({ params }: { params: { slug: string } }) {
   await connectToDB();
   const blog = (await Blog.findOne({ slug: params.slug }).lean()) as Blog | null;
   if (!blog) return notFound();
