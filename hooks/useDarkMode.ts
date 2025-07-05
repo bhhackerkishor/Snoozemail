@@ -4,10 +4,13 @@ export default function useDarkMode() {
   const [theme, setTheme] = useState("system");
 
   const getSystemTheme = () =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
 
   const applyTheme = (selectedTheme: string) => {
-    const resolvedTheme = selectedTheme === "system" ? getSystemTheme() : selectedTheme;
+    const resolvedTheme =
+      selectedTheme === "system" ? getSystemTheme() : selectedTheme;
     document.documentElement.classList.toggle("dark", resolvedTheme === "dark");
   };
 

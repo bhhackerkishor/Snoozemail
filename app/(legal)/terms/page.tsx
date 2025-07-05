@@ -1,14 +1,22 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
-import { ClipboardCheck, AlertTriangle, Shield, Clock, Zap, Mail, Ban } from "lucide-react";
+import {
+  ClipboardCheck,
+  AlertTriangle,
+  Shield,
+  Clock,
+  Zap,
+  Mail,
+  Ban,
+} from "lucide-react";
 import Link from "next/link";
 
 export default function TermsOfService() {
-  const effectiveDate = new Date().toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+  const effectiveDate = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 
   return (
@@ -22,7 +30,9 @@ export default function TermsOfService() {
         <div className="inline-flex items-center justify-center p-3 rounded-full bg-primary/10 mb-4">
           <ClipboardCheck className="w-8 h-8 text-primary" />
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">Terms of Service</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">
+          Terms of Service
+        </h1>
         <p className="text-muted-foreground">Effective Date: {effectiveDate}</p>
       </motion.div>
 
@@ -34,11 +44,14 @@ export default function TermsOfService() {
       >
         <div className="bg-secondary/30 rounded-lg p-6 mb-8 border">
           <p className="text-lg font-medium">Welcome to SnoozeMail.</p>
-          <p>These Terms govern your access and use of our email-based reminder service.</p>
+          <p>
+            These Terms govern your access and use of our email-based reminder
+            service.
+          </p>
         </div>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="beta-status"
           >
@@ -48,15 +61,22 @@ export default function TermsOfService() {
             <span>1. Beta Status</span>
           </motion.h2>
           <div className="space-y-4">
-            <p>SnoozeMail is currently in beta. While we work to provide a reliable experience, we cannot guarantee 100% uptime or bug-free service.</p>
+            <p>
+              SnoozeMail is currently in beta. While we work to provide a
+              reliable experience, we cannot guarantee 100% uptime or bug-free
+              service.
+            </p>
             <div className="bg-yellow-50 dark:bg-yellow-900/10 p-4 rounded-lg border-l-4 border-yellow-400">
-              <p className="font-medium">Please report any issues you encounter to help us improve the service.</p>
+              <p className="font-medium">
+                Please report any issues you encounter to help us improve the
+                service.
+              </p>
             </div>
           </div>
         </section>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="acceptable-use"
           >
@@ -74,12 +94,14 @@ export default function TermsOfService() {
                 <li>Abuse the platform to send mass emails</li>
               </ul>
             </div>
-            <p className="text-sm text-muted-foreground">Violations may result in immediate account termination.</p>
+            <p className="text-sm text-muted-foreground">
+              Violations may result in immediate account termination.
+            </p>
           </div>
         </section>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="reliability"
           >
@@ -89,7 +111,10 @@ export default function TermsOfService() {
             <span>3. Reminder Reliability</span>
           </motion.h2>
           <div className="space-y-4">
-            <p>We strive to deliver emails on time, but delays or failures may occur due to:</p>
+            <p>
+              We strive to deliver emails on time, but delays or failures may
+              occur due to:
+            </p>
             <div className="bg-secondary/20 p-4 rounded-lg">
               <ul className="list-disc pl-5 space-y-2">
                 <li>System limitations</li>
@@ -98,13 +123,16 @@ export default function TermsOfService() {
               </ul>
             </div>
             <div className="bg-blue-50 dark:bg-blue-900/10 p-4 rounded-lg border-l-4 border-blue-400">
-              <p><strong>Note:</strong> We are not responsible for any consequences from missed or delayed reminders.</p>
+              <p>
+                <strong>Note:</strong> We are not responsible for any
+                consequences from missed or delayed reminders.
+              </p>
             </div>
           </div>
         </section>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="warranty"
           >
@@ -114,12 +142,15 @@ export default function TermsOfService() {
             <span>4. No Warranty</span>
           </motion.h2>
           <div className="bg-secondary/20 p-4 rounded-lg">
-            <p>SnoozeMail is provided <strong>&quot;as is&quot;</strong> without warranty of any kind. You use it at your own risk.</p>
+            <p>
+              SnoozeMail is provided <strong>&quot;as is&quot;</strong> without
+              warranty of any kind. You use it at your own risk.
+            </p>
           </div>
         </section>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="liability"
           >
@@ -141,7 +172,7 @@ export default function TermsOfService() {
         </section>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="termination"
           >
@@ -151,12 +182,15 @@ export default function TermsOfService() {
             <span>6. Account Termination</span>
           </motion.h2>
           <div className="bg-secondary/20 p-4 rounded-lg">
-            <p>We may suspend or terminate accounts for misuse, abuse, or violation of these terms.</p>
+            <p>
+              We may suspend or terminate accounts for misuse, abuse, or
+              violation of these terms.
+            </p>
           </div>
         </section>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="changes"
           >
@@ -166,12 +200,15 @@ export default function TermsOfService() {
             <span>7. Changes</span>
           </motion.h2>
           <div className="bg-secondary/20 p-4 rounded-lg">
-            <p>We may update these terms at any time. Continued use of the service means you agree to the latest version.</p>
+            <p>
+              We may update these terms at any time. Continued use of the
+              service means you agree to the latest version.
+            </p>
           </div>
         </section>
 
         <section>
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="contact"
           >
@@ -180,12 +217,23 @@ export default function TermsOfService() {
             </div>
             <span>8. Contact</span>
           </motion.h2>
-          <p>Questions? Email us at <Link href="mailto:legal@snoozemail.in" className="text-primary hover:underline">legal@snoozemail.in</Link></p>
+          <p>
+            Questions? Email us at{" "}
+            <Link
+              href="mailto:legal@snoozemail.in"
+              className="text-primary hover:underline"
+            >
+              legal@snoozemail.in
+            </Link>
+          </p>
         </section>
 
         <div className="mt-16 pt-8 border-t text-center text-sm text-muted-foreground">
           <p>Last updated: {effectiveDate}</p>
-          <p className="mt-2">By using SnoozeMail, you acknowledge that you have read and agreed to these terms.</p>
+          <p className="mt-2">
+            By using SnoozeMail, you acknowledge that you have read and agreed
+            to these terms.
+          </p>
         </div>
       </motion.div>
     </div>

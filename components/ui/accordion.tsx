@@ -25,7 +25,7 @@ export const AccordionTrigger = ({
     <AccordionPrimitive.Trigger
       className={cn(
         "flex w-full items-center justify-between py-4 font-medium transition-all hover:underline",
-        className
+        className,
       )}
       {...props}
     >
@@ -43,7 +43,7 @@ export const AccordionContent = ({
   <AccordionPrimitive.Content
     className={cn(
       "overflow-hidden text-sm data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp",
-      className
+      className,
     )}
     {...props}
   >

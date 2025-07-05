@@ -1,18 +1,18 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-let isConnected = false
+let isConnected = false;
 
 export default async function connectToDB(): Promise<void> {
-  if (isConnected) return
+  if (isConnected) return;
 
   try {
     await mongoose.connect(process.env.MONGODB_URI!, {
-      dbName: 'SnoozeMail',
+      dbName: "SnoozeMail",
       bufferCommands: false,
-    })
-    isConnected = true
-    console.log("✅ MongoDB connected")
+    });
+    isConnected = true;
+    console.log("✅ MongoDB connected");
   } catch (error) {
-    console.error("❌ MongoDB connection error:", error)
+    console.error("❌ MongoDB connection error:", error);
   }
 }

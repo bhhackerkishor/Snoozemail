@@ -7,7 +7,7 @@ import DashboardSidebar from "@/components/DashboardSidebar";
 export default function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -23,10 +23,12 @@ export default function DashboardLayout({
   return (
     <div className="flex">
       <DashboardSidebar />
-      <main className={cn(
-        "flex-1 p-4 transition-all duration-300",
-        !isMobile ? "ml-8" : "" // Only add margin on desktop
-      )}>
+      <main
+        className={cn(
+          "flex-1 p-4 transition-all duration-300",
+          !isMobile ? "ml-8" : "", // Only add margin on desktop
+        )}
+      >
         {children}
       </main>
     </div>

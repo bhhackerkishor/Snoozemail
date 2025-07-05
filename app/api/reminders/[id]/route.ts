@@ -15,19 +15,31 @@ export async function DELETE(request: NextRequest) {
     const id = getIdFromUrl(request);
 
     if (!id) {
-      return NextResponse.json({ error: "Missing reminder ID" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing reminder ID" },
+        { status: 400 },
+      );
     }
 
     const deleted = await Reminder.findByIdAndDelete(id);
 
     if (!deleted) {
-      return NextResponse.json({ error: "Reminder not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "Reminder not found" },
+        { status: 404 },
+      );
     }
 
-    return NextResponse.json({ message: "Deleted successfully" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Deleted successfully" },
+      { status: 200 },
+    );
   } catch (error) {
     console.error("DELETE error:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
   }
 }
 
@@ -37,9 +49,12 @@ export async function PUT(request: NextRequest) {
 
   try {
     const id = getIdFromUrl(request);
-	console.log(id,request)
+    console.log(id, request);
     if (!id) {
-      return NextResponse.json({ error: "Missing reminder ID" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing reminder ID" },
+        { status: 400 },
+      );
     }
 
     const body = await request.json();
@@ -50,12 +65,18 @@ export async function PUT(request: NextRequest) {
     });
 
     if (!updated) {
-      return NextResponse.json({ error: "Reminder not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "Reminder not found" },
+        { status: 404 },
+      );
     }
 
     return NextResponse.json(updated, { status: 200 });
   } catch (error) {
     console.error("PUT error:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
   }
 }

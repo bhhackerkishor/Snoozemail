@@ -8,11 +8,26 @@ import User from "@/lib/model/User"; // ✅ Import your User model
 export async function POST(req: NextRequest) {
   try {
     const { userId } = await auth();
-    if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!userId)
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await req.json();
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, planId,plan, amount } = body;
-	console.log(razorpay_order_id, razorpay_payment_id, razorpay_signature, planId, amount,body)
+    const {
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature,
+      planId,
+      plan,
+      amount,
+    } = body;
+    console.log(
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature,
+      planId,
+      amount,
+      body,
+    );
     // 1. Verify Signature
     const expectedSignature = crypto
       .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET!)
@@ -33,26 +48,28 @@ export async function POST(req: NextRequest) {
 
     // 4. Update User by clerkId
     await User.findOneAndUpdate(
-  { clerkId: userId },
-  {
-    plan: planId ||plan,
-    paymentId: razorpay_payment_id,
-    subscribedAt: new Date(),
-    $push: {
-      purchaseHistory: {
-        planName: planId || plan ,
-        amount: parseInt(amount),
+      { clerkId: userId },
+      {
+        plan: planId || plan,
         paymentId: razorpay_payment_id,
+        subscribedAt: new Date(),
+        $push: {
+          purchaseHistory: {
+            planName: planId || plan,
+            amount: parseInt(amount),
+            paymentId: razorpay_payment_id,
+          },
+        },
       },
-    },
-  },
-  { new: true }
-);
-
+      { new: true },
+    );
 
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Verification Error:", err);
-    return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Something went wrong" },
+      { status: 500 },
+    );
   }
 }

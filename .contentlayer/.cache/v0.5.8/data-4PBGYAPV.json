@@ -1,0 +1,31 @@
+{
+  "cacheItemsMap": {
+    "posts/first-post.mdx": {
+      "document": {
+        "title": "First Post",
+        "description": "This is a test post for SnoozeMail blog.",
+        "date": "2025-07-03T00:00:00.000Z",
+        "category": "Updates",
+        "slug": "first-post",
+        "ogImage": "/blog/og1.png",
+        "body": {
+          "raw": "\nWelcome to the blog! This post shows the power of Contentlayer2.\n",
+          "code": "var Component=(()=>{var m=Object.create;var s=Object.defineProperty;var f=Object.getOwnPropertyDescriptor;var u=Object.getOwnPropertyNames;var d=Object.getPrototypeOf,h=Object.prototype.hasOwnProperty;var x=(t,o)=>()=>(o||t((o={exports:{}}).exports,o),o.exports),_=(t,o)=>{for(var e in o)s(t,e,{get:o[e],enumerable:!0})},c=(t,o,e,i)=>{if(o&&typeof o==\"object\"||typeof o==\"function\")for(let n of u(o))!h.call(t,n)&&n!==e&&s(t,n,{get:()=>o[n],enumerable:!(i=f(o,n))||i.enumerable});return t};var M=(t,o,e)=>(e=t!=null?m(d(t)):{},c(o||!t||!t.__esModule?s(e,\"default\",{value:t,enumerable:!0}):e,t)),b=t=>c(s({},\"__esModule\",{value:!0}),t);var p=x((C,a)=>{a.exports=_jsx_runtime});var w={};_(w,{default:()=>g,frontmatter:()=>j});var r=M(p()),j={title:\"First Post\",description:\"This is a test post for SnoozeMail blog.\",date:\"2025-07-03\",category:\"Updates\",slug:\"first-post\",ogImage:\"/blog/og1.png\"};function l(t){let o={p:\"p\",...t.components};return(0,r.jsx)(o.p,{children:\"Welcome to the blog! This post shows the power of Contentlayer2.\"})}function g(t={}){let{wrapper:o}=t.components||{};return o?(0,r.jsx)(o,{...t,children:(0,r.jsx)(l,{...t})}):l(t)}return b(w);})();\n;return Component;"
+        },
+        "_id": "posts/first-post.mdx",
+        "_raw": {
+          "sourceFilePath": "posts/first-post.mdx",
+          "sourceFileName": "first-post.mdx",
+          "sourceFileDir": "posts",
+          "contentType": "mdx",
+          "flattenedPath": "posts/first-post"
+        },
+        "type": "Blog",
+        "url": "/blog/first-post"
+      },
+      "documentHash": "1751553737806",
+      "hasWarnings": false,
+      "documentTypeName": "Blog"
+    }
+  }
+}

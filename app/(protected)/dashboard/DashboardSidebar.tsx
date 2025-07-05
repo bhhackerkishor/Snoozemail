@@ -18,11 +18,31 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 const navItems = [
-  { href: "/dashboard", label: "Dashboard", icon: <Home className="w-5 h-5" /> },
-  { href: "/reminders", label: "Reminders", icon: <Bell className="w-5 h-5" /> },
-  { href: "/emails", label: "Snoozed Emails", icon: <Mail className="w-5 h-5" /> },
-  { href: "/subscription", label: "Subscription", icon: <DollarSign className="w-5 h-5" /> },
-  { href: "/settings", label: "Settings", icon: <Settings className="w-5 h-5" /> },
+  {
+    href: "/dashboard",
+    label: "Dashboard",
+    icon: <Home className="w-5 h-5" />,
+  },
+  {
+    href: "/reminders",
+    label: "Reminders",
+    icon: <Bell className="w-5 h-5" />,
+  },
+  {
+    href: "/emails",
+    label: "Snoozed Emails",
+    icon: <Mail className="w-5 h-5" />,
+  },
+  {
+    href: "/subscription",
+    label: "Subscription",
+    icon: <DollarSign className="w-5 h-5" />,
+  },
+  {
+    href: "/settings",
+    label: "Settings",
+    icon: <Settings className="w-5 h-5" />,
+  },
 ];
 
 export default function DashboardSidebar() {
@@ -33,14 +53,14 @@ export default function DashboardSidebar() {
 
   // Check if mobile view
   useEffect(() => {
-  //console.log(isMobile,isOpen)
+    //console.log(isMobile,isOpen)
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
       // On desktop, always keep sidebar open
       if (!mobile) setIsOpen(true);
     };
-    
+
     handleResize(); // Initial check
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -51,42 +71,45 @@ export default function DashboardSidebar() {
     if (isMobile && isOpen) {
       setIsOpen(false);
     }
-  }, [pathname, isMobile,isOpen]);
+  }, [pathname, isMobile, isOpen]);
 
   return (
     <>
       {/* Mobile Toggle Button */}
       {isMobile && (
-         <motion.button
-      onClick={() => setIsOpen(!isOpen)}
-      className="md:hidden fixed top-3.5 left-4 z-40 p-2 rounded-md bg-white dark:bg-gray-800 shadow-md border border-gray-200 dark:border-gray-700"
-      aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
-      whileTap={{ scale: 0.95 }}
-    >
-      {isOpen ? (
-        <X className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-      ) : (
-        <motion.div
-          initial={{ rotate: 0 }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 0.5 }}
+        <motion.button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden fixed top-3.5 left-4 z-40 p-2 rounded-md bg-white dark:bg-gray-800 shadow-md border border-gray-200 dark:border-gray-700"
+          aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
+          whileTap={{ scale: 0.95 }}
         >
-          <MailOpen className="w-6 h-6 text-sky-600 dark:text-sky-400" />
-        </motion.div>
-      )}
-    </motion.button>
+          {isOpen ? (
+            <X className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+          ) : (
+            <motion.div
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 0.5 }}
+            >
+              <MailOpen className="w-6 h-6 text-sky-600 dark:text-sky-400" />
+            </motion.div>
+          )}
+        </motion.button>
       )}
 
       {/* Sidebar */}
       <aside
         className={cn(
           "fixed top-0 left-0 bottom-0 w-64 bg-white dark:bg-gray-900 border-r flex flex-col justify-between p-4 shadow-sm z-30 transition-transform duration-300 ease-in-out",
-          isMobile && !isOpen ? "-translate-x-full" : "translate-x-0"
+          isMobile && !isOpen ? "-translate-x-full" : "translate-x-0",
         )}
       >
         <div>
           {/* Logo - Shows on both mobile and desktop */}
-          <Link href="/" className="flex items-center gap-2 mb-8 px-4 py-2 text-sky-700 dark:text-sky-300 text-lg font-bold">
+          <Link
+            href="/"
+            className="flex items-center gap-2 mb-8 px-4 py-2 text-sky-700 dark:text-sky-300 text-lg font-bold"
+          >
             <Mail className="w-5 h-5" />
             SnoozeMail
           </Link>
@@ -99,7 +122,8 @@ export default function DashboardSidebar() {
                 href={item.href}
                 className={cn(
                   "flex items-center gap-3 text-gray-700 dark:text-gray-200 hover:bg-sky-100 dark:hover:bg-sky-800 px-4 py-2 rounded-md transition",
-                  pathname === item.href && "bg-sky-100 dark:bg-sky-800 font-medium"
+                  pathname === item.href &&
+                    "bg-sky-100 dark:bg-sky-800 font-medium",
                 )}
               >
                 {item.icon}
@@ -165,7 +189,7 @@ export default function DashboardSidebar() {
       <div
         className={cn(
           "transition-all duration-300",
-          !isMobile ? "ml-64" : "" // Only add margin on desktop
+          !isMobile ? "ml-64" : "", // Only add margin on desktop
         )}
       >
         {/* Your main content goes here */}

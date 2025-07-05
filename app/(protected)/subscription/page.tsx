@@ -8,7 +8,8 @@ export default async function SubscriptionPage() {
   await connectDB();
   const clerkUser = await currentUser();
 
-  if (!clerkUser?.id) return <div className="text-center mt-10">User not found</div>;
+  if (!clerkUser?.id)
+    return <div className="text-center mt-10">User not found</div>;
 
   const dbUser = await User.findOne({ clerkId: clerkUser.id });
 

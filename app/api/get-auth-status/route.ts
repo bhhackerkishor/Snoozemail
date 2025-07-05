@@ -10,7 +10,9 @@ export async function POST() {
   const user = await currentUser();
 
   if (!user?.id || !user?.primaryEmailAddress?.emailAddress) {
-    return new Response(JSON.stringify({ error: "User not found" }), { status: 401 });
+    return new Response(JSON.stringify({ error: "User not found" }), {
+      status: 401,
+    });
   }
 
   const clerkId = user.id;

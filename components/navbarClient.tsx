@@ -1,6 +1,6 @@
-"use client";  // This makes this file a client-side component
+"use client"; // This makes this file a client-side component
 
-import { usePathname } from "next/navigation";  // Import usePathname
+import { usePathname } from "next/navigation"; // Import usePathname
 import Navbar from "./navbar";
 
 const NavbarClient = () => {

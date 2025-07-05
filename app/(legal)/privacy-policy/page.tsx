@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 import { ShieldCheck, Lock, Trash2, Mail } from "lucide-react";
 import Link from "next/link";
 
 export default function PrivacyPolicy() {
-  const effectiveDate = new Date().toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+  const effectiveDate = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 
   return (
@@ -22,7 +22,9 @@ export default function PrivacyPolicy() {
         <div className="inline-flex items-center justify-center p-3 rounded-full bg-primary/10 mb-4">
           <ShieldCheck className="w-8 h-8 text-primary" />
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">Privacy Policy</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">
+          Privacy Policy
+        </h1>
         <p className="text-muted-foreground">Effective Date: {effectiveDate}</p>
       </motion.div>
 
@@ -33,12 +35,17 @@ export default function PrivacyPolicy() {
         className="prose prose-sm sm:prose-base dark:prose-invert max-w-none"
       >
         <div className="bg-secondary/30 rounded-lg p-6 mb-8 border">
-          <p className="text-lg font-medium">At SnoozeMail, your privacy is important to us.</p>
-          <p>We built this service with privacy as a core principle — not an afterthought.</p>
+          <p className="text-lg font-medium">
+            At SnoozeMail, your privacy is important to us.
+          </p>
+          <p>
+            We built this service with privacy as a core principle — not an
+            afterthought.
+          </p>
         </div>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="information-we-collect"
           >
@@ -48,8 +55,13 @@ export default function PrivacyPolicy() {
             <span>1. Information We Collect</span>
           </motion.h2>
           <div className="space-y-4">
-            <p>We do not collect or store any personal content from your emails permanently. Emails forwarded to our system are stored <strong>temporarily</strong> for the sole purpose of sending them back to you after your requested delay.</p>
-            
+            <p>
+              We do not collect or store any personal content from your emails
+              permanently. Emails forwarded to our system are stored{" "}
+              <strong>temporarily</strong> for the sole purpose of sending them
+              back to you after your requested delay.
+            </p>
+
             <div className="bg-secondary/20 p-4 rounded-lg border-l-4 border-primary">
               <h3 className="font-medium mb-2">We collect:</h3>
               <ul className="list-disc pl-5 space-y-1">
@@ -62,7 +74,7 @@ export default function PrivacyPolicy() {
         </section>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="how-we-use"
           >
@@ -82,7 +94,9 @@ export default function PrivacyPolicy() {
             </div>
 
             <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border-l-4 border-red-500">
-              <h3 className="font-medium mb-2">We <strong>do not</strong>:</h3>
+              <h3 className="font-medium mb-2">
+                We <strong>do not</strong>:
+              </h3>
               <ul className="list-disc pl-5 space-y-1">
                 <li>Sell your data</li>
                 <li>Share with third parties</li>
@@ -93,7 +107,7 @@ export default function PrivacyPolicy() {
         </section>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="data-retention"
           >
@@ -102,11 +116,15 @@ export default function PrivacyPolicy() {
             </div>
             <span>3. Data Retention</span>
           </motion.h2>
-          <p>Email content is deleted after your reminder is sent, typically within minutes to hours. We retain minimal metadata (like timestamps and plan type) for account management.</p>
+          <p>
+            Email content is deleted after your reminder is sent, typically
+            within minutes to hours. We retain minimal metadata (like timestamps
+            and plan type) for account management.
+          </p>
         </section>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="third-party"
           >
@@ -115,11 +133,14 @@ export default function PrivacyPolicy() {
             </div>
             <span>4. Third-Party Services</span>
           </motion.h2>
-          <p>We use services like Clerk (for login), Razorpay (for payments), and optionally Gmail APIs to access forwarded messages securely.</p>
+          <p>
+            We use services like Clerk (for login), Razorpay (for payments), and
+            optionally Gmail APIs to access forwarded messages securely.
+          </p>
         </section>
 
         <section className="mb-12">
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="security"
           >
@@ -128,11 +149,15 @@ export default function PrivacyPolicy() {
             </div>
             <span>5. Security</span>
           </motion.h2>
-          <p>Your data is encrypted during transmission and handled securely. However, this is a beta product — do not use it for sensitive or critical information.</p>
+          <p>
+            Your data is encrypted during transmission and handled securely.
+            However, this is a beta product — do not use it for sensitive or
+            critical information.
+          </p>
         </section>
 
         <section>
-          <motion.h2 
+          <motion.h2
             className="flex items-center gap-3 text-2xl font-semibold mb-6 scroll-mt-24"
             id="contact"
           >
@@ -141,12 +166,23 @@ export default function PrivacyPolicy() {
             </div>
             <span>6. Contact</span>
           </motion.h2>
-          <p>If you have questions, email us at <Link href="mailto:support@snoozemail.in" className="text-primary hover:underline">support@snoozemail.in</Link></p>
+          <p>
+            If you have questions, email us at{" "}
+            <Link
+              href="mailto:support@snoozemail.in"
+              className="text-primary hover:underline"
+            >
+              support@snoozemail.in
+            </Link>
+          </p>
         </section>
 
         <div className="mt-16 pt-8 border-t text-center text-sm text-muted-foreground">
           <p>Last updated: {effectiveDate}</p>
-          <p className="mt-2">We may update this policy periodically. Significant changes will be notified to users.</p>
+          <p className="mt-2">
+            We may update this policy periodically. Significant changes will be
+            notified to users.
+          </p>
         </div>
       </motion.div>
     </div>

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
@@ -18,8 +18,8 @@ interface DbUser {
   plan: string;
   usedRemindersThisMonth: number;
   resetAt?: string;
-  purchaseHistory?: Array<any>; // or Array<Purchase> if you define it
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  purchaseHistory?: Array<any>;
 }
 
 export default function SettingsPage() {
@@ -28,8 +28,8 @@ export default function SettingsPage() {
   const [displayName, setDisplayName] = useState("");
   const [notifications, setNotifications] = useState(true);
   const [timezone, setTimezone] = useState("Asia/Kolkata");
- 
-const { theme,setTheme } = useDarkMode();
+
+  const { theme, setTheme } = useDarkMode();
   useEffect(() => {
     if (user) {
       setDisplayName(user.fullName || user.firstName || "");
@@ -38,16 +38,15 @@ const { theme,setTheme } = useDarkMode();
   }, [user]);
 
   const fetchDbUser = async () => {
-  try {
-    const res = await fetch("/api/user");
-    const data = await res.json();
-    if (data.user) setDbUser(data.user);
-	console.log(data)
-  } catch (error) {
-    console.error("Failed to load db user:", error);
-  }
-};
-
+    try {
+      const res = await fetch("/api/user");
+      const data = await res.json();
+      if (data.user) setDbUser(data.user);
+      console.log(data);
+    } catch (error) {
+      console.error("Failed to load db user:", error);
+    }
+  };
 
   const handleSave = () => {
     toast.success("Settings saved (not wired up yet)");
@@ -66,23 +65,36 @@ const { theme,setTheme } = useDarkMode();
 
       {/* Profile */}
       <Card className="mb-6">
-        <CardHeader><CardTitle>Profile</CardTitle></CardHeader>
+        <CardHeader>
+          <CardTitle>Profile</CardTitle>
+        </CardHeader>
         <CardContent className="space-y-4">
           <div>
             <Label>Display Name</Label>
-            <Input value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
+            <Input
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+            />
           </div>
           <div>
             <Label>Email</Label>
-            <Input value={user?.emailAddresses[0].emailAddress} readOnly disabled />
+            <Input
+              value={user?.emailAddresses[0].emailAddress}
+              readOnly
+              disabled
+            />
           </div>
-          <Button onClick={handleSave} className="bg-sky-600 hover:bg-sky-700">Save Changes</Button>
+          <Button onClick={handleSave} className="bg-sky-600 hover:bg-sky-700">
+            Save Changes
+          </Button>
         </CardContent>
       </Card>
 
       {/* Preferences */}
       <Card className="mb-6">
-        <CardHeader><CardTitle>Preferences</CardTitle></CardHeader>
+        <CardHeader>
+          <CardTitle>Preferences</CardTitle>
+        </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
@@ -91,7 +103,10 @@ const { theme,setTheme } = useDarkMode();
                 Get reminder notifications via email
               </p>
             </div>
-            <Switch checked={notifications} onCheckedChange={setNotifications} />
+            <Switch
+              checked={notifications}
+              onCheckedChange={setNotifications}
+            />
           </div>
 
           <div>
@@ -128,22 +143,36 @@ const { theme,setTheme } = useDarkMode();
 
       {/* Plan */}
       <Card className="mb-6">
-        <CardHeader><CardTitle>Plan & Billing</CardTitle></CardHeader>
+        <CardHeader>
+          <CardTitle>Plan & Billing</CardTitle>
+        </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-sm">
             You&apos;re currently on the{" "}
-            <strong>{(dbUser?.plan || user?.publicMetadata?.plan || "Free")?.toString()}</strong> plan.
+            <strong>
+              {(
+                dbUser?.plan ||
+                user?.publicMetadata?.plan ||
+                "Free"
+              )?.toString()}
+            </strong>{" "}
+            plan.
           </p>
           <p className="text-sm">
-            Reminders used this month: <strong>{dbUser?.usedRemindersThisMonth ?? 0}</strong>
+            Reminders used this month:{" "}
+            <strong>{dbUser?.usedRemindersThisMonth ?? 0}</strong>
           </p>
           {dbUser?.resetAt && (
             <p className="text-sm">
-              Plan resets on: <strong>{new Date(dbUser.resetAt).toLocaleDateString()}</strong>
+              Plan resets on:{" "}
+              <strong>{new Date(dbUser.resetAt).toLocaleDateString()}</strong>
             </p>
           )}
           <Link href="/subscriptions">
-            <Button variant="outline" className="text-sky-600 border-sky-600 hover:bg-sky-100 dark:hover:bg-sky-800">
+            <Button
+              variant="outline"
+              className="text-sky-600 border-sky-600 hover:bg-sky-100 dark:hover:bg-sky-800"
+            >
               Upgrade Plan
             </Button>
           </Link>
@@ -152,12 +181,18 @@ const { theme,setTheme } = useDarkMode();
 
       {/* Danger Zone */}
       <Card className="border-red-500">
-        <CardHeader><CardTitle className="text-red-600">Danger Zone</CardTitle></CardHeader>
+        <CardHeader>
+          <CardTitle className="text-red-600">Danger Zone</CardTitle>
+        </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-sm text-gray-600 dark:text-gray-400">
             This action is permanent and will delete all your data.
           </p>
-          <Button variant="destructive" onClick={handleDelete} className="gap-2">
+          <Button
+            variant="destructive"
+            onClick={handleDelete}
+            className="gap-2"
+          >
             <Trash2 className="w-4 h-4" /> Delete Account
           </Button>
         </CardContent>

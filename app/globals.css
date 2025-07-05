@@ -120,3 +120,90 @@
     @apply bg-background text-foreground;
   }
 }
+html,
+body {
+  scroll-behavior: smooth; /* optional if using anchors */
+}
+
+/* For rehype-pretty-code */
+[data-rehype-pretty-code-fragment] {
+  overflow-x: auto;
+}
+[data-rehype-pretty-code-fragment] pre {
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+[data-rehype-pretty-code-title] {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: #1e293b;
+  color: #f8fafc;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+/* MDX Content Styling */
+.mdx-content h1 {
+  @apply text-4xl font-bold mb-6 mt-10 leading-tight;
+}
+
+.mdx-content h2 {
+  @apply text-3xl font-semibold mt-8 mb-4 leading-snug;
+}
+
+.mdx-content h3 {
+  @apply text-2xl font-medium mt-6 mb-3 leading-snug;
+}
+
+.mdx-content p {
+  @apply text-base leading-7 mb-4 text-gray-800 dark:text-gray-200;
+}
+
+.mdx-content a {
+  @apply text-sky-600 dark:text-sky-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition-colors;
+}
+
+.mdx-content ul {
+  @apply list-disc pl-6 mb-4;
+}
+
+.mdx-content ol {
+  @apply list-decimal pl-6 mb-4;
+}
+
+.mdx-content li {
+  @apply mb-2;
+}
+
+.mdx-content blockquote {
+  @apply border-l-4 pl-4 italic text-gray-600 border-gray-300 dark:border-gray-600 dark:text-gray-400;
+}
+
+.mdx-content pre {
+  @apply bg-gray-100 dark:bg-gray-800 text-sm p-4 rounded-md overflow-x-auto my-6 text-gray-800 dark:text-gray-100;
+}
+
+.mdx-content code {
+  @apply bg-gray-200 dark:bg-gray-700 text-sm px-1 py-0.5 rounded text-sky-600 dark:text-sky-400;
+}
+
+.mdx-content img {
+  @apply my-6 rounded-lg shadow-md;
+}
+
+.mdx-content hr {
+  @apply border-t my-8 border-gray-300 dark:border-gray-700;
+}
+
+.mdx-content strong {
+  @apply font-semibold text-gray-900 dark:text-white;
+}
+
+.mdx-content table {
+  @apply w-full border-collapse my-6;
+}
+
+.mdx-content th,
+.mdx-content td {
+  @apply border px-4 py-2 text-left text-gray-800 dark:text-gray-200;
+}

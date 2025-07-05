@@ -6,17 +6,32 @@ type PasswordCriteriaProps = {
 
 const PasswordCriteria: React.FC<PasswordCriteriaProps> = ({ password }) => {
   const criteria = [
-    { label: "At least 8 characters", test: (pass: string) => pass.length >= 8 },
+    {
+      label: "At least 8 characters",
+      test: (pass: string) => pass.length >= 8,
+    },
     { label: "At least one number", test: (pass: string) => /\d/.test(pass) },
-    { label: "At least one uppercase letter", test: (pass: string) => /[A-Z]/.test(pass) },
-    { label: "At least one lowercase letter", test: (pass: string) => /[a-z]/.test(pass) },
-    { label: "At least one special character", test: (pass: string) => /[!@#$%^&*(),.?":{}|<>]/.test(pass) },
+    {
+      label: "At least one uppercase letter",
+      test: (pass: string) => /[A-Z]/.test(pass),
+    },
+    {
+      label: "At least one lowercase letter",
+      test: (pass: string) => /[a-z]/.test(pass),
+    },
+    {
+      label: "At least one special character",
+      test: (pass: string) => /[!@#$%^&*(),.?":{}|<>]/.test(pass),
+    },
   ];
 
   return (
     <ul className="text-sm text-gray-600 dark:text-gray-400 mt-2 space-y-1">
       {criteria.map(({ label, test }) => (
-        <li key={label} className={test(password) ? "text-green-500" : "text-red-500"}>
+        <li
+          key={label}
+          className={test(password) ? "text-green-500" : "text-red-500"}
+        >
           {label}
         </li>
       ))}
@@ -28,7 +43,9 @@ type PasswordStrengthMeterProps = {
   password: string;
 };
 
-const PasswordStrengthMeter: React.FC<PasswordStrengthMeterProps> = ({ password }) => {
+const PasswordStrengthMeter: React.FC<PasswordStrengthMeterProps> = ({
+  password,
+}) => {
   const getStrength = (pass: string): number => {
     let score = 0;
     if (pass.length >= 8) score++;
@@ -56,9 +73,14 @@ const PasswordStrengthMeter: React.FC<PasswordStrengthMeterProps> = ({ password 
   return (
     <div className="mt-2">
       <div className="w-full h-2 bg-gray-200 rounded">
-        <div className={`h-full ${getColor(strength)} rounded transition-all duration-300`} style={{ width: `${(strength / 5) * 100}%` }} />
+        <div
+          className={`h-full ${getColor(strength)} rounded transition-all duration-300`}
+          style={{ width: `${(strength / 5) * 100}%` }}
+        />
       </div>
-      <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">{getStrengthText(strength)}</p>
+      <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
+        {getStrengthText(strength)}
+      </p>
       <PasswordCriteria password={password} />
     </div>
   );

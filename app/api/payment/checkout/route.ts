@@ -10,7 +10,6 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_KEY_SECRET!,
 });
 
-
 export async function POST(req: NextRequest) {
   try {
     const { userId } = await auth();
@@ -21,11 +20,14 @@ export async function POST(req: NextRequest) {
     const { planId, amount } = await req.json();
 
     if (!planId || !amount) {
-      return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Invalid request body" },
+        { status: 400 },
+      );
     }
 
     const options = {
-      amount: amount , // Convert to paise
+      amount: amount, // Convert to paise
       currency: "INR",
       receipt: `${planId}_${Date.now()}`,
     };
@@ -38,6 +40,9 @@ export async function POST(req: NextRequest) {
     });
   } catch (err) {
     console.error("Checkout Error:", err);
-    return NextResponse.json({ error: "Failed to create order" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to create order" },
+      { status: 500 },
+    );
   }
 }
