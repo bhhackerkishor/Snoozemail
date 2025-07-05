@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 
 interface PageProps {
   params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 export type BlogType = {
@@ -26,7 +27,7 @@ export type BlogType = {
   };
 };
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   await connectToDB();
   const post = (await Blog.findOne({ slug: params.slug }).lean()) as BlogType | null;
   if (!post) return {};
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: { params: { slug: string } }) {
   await connectToDB();
   const blog = (await Blog.findOne({ slug: params.slug }).lean()) as BlogType | null;
   if (!blog) return notFound();
@@ -53,6 +54,7 @@ export default async function Page({ params }: PageProps) {
         width={1200}
         height={600}
         className="w-full rounded-lg mb-6"
+        priority
       />
       <h1 className="text-4xl font-bold mb-2">{blog.title}</h1>
       <div className="text-sm text-gray-500 mb-4 flex flex-wrap gap-4">
@@ -87,7 +89,7 @@ export default async function Page({ params }: PageProps) {
         </div>
       )}
 
-      <div className="mdx-content">
+      <div className="prose dark:prose-invert max-w-none">
         <ReactMarkdown>{blog.content}</ReactMarkdown>
       </div>
     </article>
