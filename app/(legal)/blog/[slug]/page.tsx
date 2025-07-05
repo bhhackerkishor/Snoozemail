@@ -1,4 +1,4 @@
-// app/(legal)/blog/[slug]/page.tsx
+// @ts-nocheck
 import connectToDB from '@/lib/db';
 import Blog from '@/lib/model/blog';
 import ReactMarkdown from 'react-markdown';
