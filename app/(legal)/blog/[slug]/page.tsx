@@ -4,9 +4,6 @@ import Blog from '@/lib/model/blog';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
-
-
 
 type Blog = {
   _id: string;
