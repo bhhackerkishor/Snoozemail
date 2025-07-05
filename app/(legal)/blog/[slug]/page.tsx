@@ -5,7 +5,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-export type BlogType = {
+// Define blog type without any constraints
+type BlogType = {
   _id: string;
   title: string;
   description: string;
@@ -22,10 +23,19 @@ export type BlogType = {
   };
 };
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+// Metadata generator
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: { slug: string } 
+}): Promise<Metadata> {
   await connectToDB();
-  const post = (await Blog.findOne({ slug: params.slug }).lean()) as BlogType | null;
-  if (!post) return {};
+  const post = await Blog.findOne({ slug: params.slug }).lean() as BlogType | null;
+  
+  if (!post) return {
+    title: "Page Not Found",
+    description: "The requested blog post could not be found"
+  };
 
   return {
     title: post.title,
@@ -36,10 +46,18 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+// Main component with explicit typing
+export default async function BlogPostPage({
+  params
+}: {
+  params: { slug: string }
+}) {
   await connectToDB();
-  const blog = (await Blog.findOne({ slug: params.slug }).lean()) as BlogType | null;
-  if (!blog) return notFound();
+  const blog = await Blog.findOne({ slug: params.slug }).lean() as BlogType | null;
+  
+  if (!blog) {
+    return notFound();
+  }
 
   return (
     <article className="max-w-3xl mx-auto p-4">
@@ -51,7 +69,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
         className="w-full rounded-lg mb-6"
         priority
       />
+      
       <h1 className="text-4xl font-bold mb-2">{blog.title}</h1>
+      
       <div className="text-sm text-gray-500 mb-4 flex flex-wrap gap-4">
         <span>{new Date(blog.date).toLocaleDateString()}</span>
         <span>•</span>
