@@ -35,7 +35,7 @@
     "lucide-react": "^0.503.0",
     "mongoose": "^8.14.1",
     "motion": "^12.18.1",
-    "next": "^15.3.5",
+    "next": "15.3.1",
     "next-contentlayer2": "^0.5.8",
     "next-mdx-remote": "^5.0.0",
     "nodemailer": "^7.0.3",
@@ -52,13 +52,13 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "^24.0.10",
-    "@types/react": "^19.1.8",
+    "@types/node": "^20",
+    "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.7",
     "eslint": "9.29.0",
     "eslint-config-next": "15.3.4",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.2.8",
-    "typescript": "^5.8.3"
+    "typescript": "^5"
   }
 }
