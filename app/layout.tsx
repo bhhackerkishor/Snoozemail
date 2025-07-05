@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
+import ChatWidget from "@/components/ChatWidget";
 import { ErrorBoundary } from "./error-boundary";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,12 +64,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased w-full overflow-x-hidden`}
         >
           <Navbar />
           <ErrorBoundary>{children}</ErrorBoundary>
           <Toaster richColors position="top-right" />
-          
+          <ChatWidget />
         </body>
       </html>
     </ClerkProvider>
