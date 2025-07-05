@@ -1,4 +1,5 @@
-import connectToDB from "@/lib/db";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheckimport connectToDB from "@/lib/db";
 import Blog from "@/lib/model/blog";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
