@@ -17,8 +17,8 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html>
-      <body className="relative min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+
+      <div className="relative min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         {/* Center container */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
           <motion.div
@@ -123,7 +123,7 @@ export default function GlobalError({
             />
           ))}
         </div>
-      </body>
-    </html>
+      </div>
+   
   );
 }
