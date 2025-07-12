@@ -1,41 +1,52 @@
 # 💤 SnoozeMail – Smart Email Reminder SaaS
 
-SnoozeMail is a productivity-focused SaaS tool that lets users **schedule reminders via email** and receive them exactly when needed. Whether you're a busy professional, student, or entrepreneur, SnoozeMail helps you **never miss a task, event, or goal** again.
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+![Next.js](https://img.shields.io/badge/Built_with-Next.js-blue.svg)
+![Made with Love](https://img.shields.io/badge/Made%20with-%E2%9D%A4-red)
+
+**SnoozeMail** is a productivity-focused SaaS platform that lets users send **email-based reminders** — simple, reliable, and smart. Whether you’re managing tasks, goals, or daily routines, SnoozeMail ensures you **never forget anything important** again.
+
+---
+
+## 🌐 Live Demo
+
+🔗 [Try SnoozeMail Live »](https://snoozemail.vercel.app)
 
 ---
 
 ## ✨ Features
 
-- ⏰ **Email-Based Reminders** – Schedule reminders directly from your dashboard.
-- 🧠 **Smart Limits by Subscription** – 
-  - **Free**: 1 reminder/month  
-  - **Pro**: 100 reminders/month  
-  - **Team**: Unlimited reminders
-- 🌐 **Cloud Sync** – Access your reminders from any device, anytime.
-- 🔐 **Authentication & Security** – Powered by [Clerk.dev](https://clerk.dev) for user management.
-- 📈 **Dashboard Analytics** – View your usage stats and manage all reminders easily.
+- ⏰ **Smart Email Reminders** – Create reminders easily from your dashboard.
+- 📅 **Plan-Based Usage Limits**:
+  - Free: 1 reminder/month
+  - Pro: 100 reminders/month
+  - Team: Unlimited
+- 🧠 **Natural Language Reminder Input** *(coming soon)*
+- 📊 **User Analytics Dashboard**
+- 🔒 **Secure Authentication** using Clerk.dev
+- 💳 **Subscription Billing** with Razorpay
 
 ---
 
 ## 🧰 Tech Stack
 
-| Frontend | Backend | Database | Auth | Payments |
-|---------|---------|----------|------|----------|
-| Next.js (App Router) | Node.js / Next.js API Routes | MongoDB | Clerk | Razorpay |
+| Frontend | Backend | Auth | DB | Payments | Deployment |
+|----------|---------|------|----|----------|------------|
+| Next.js  | Node.js (API Routes) | Clerk | MongoDB | Razorpay | Vercel |
 
 ---
 
 ## 🚀 Getting Started
 
 ```bash
-# 1. Clone the repository
+# 1. Clone the repo
 git clone https://github.com/bhhackerkishor/snoozemail.git
 cd snoozemail
 
 # 2. Install dependencies
 npm install
 
-# 3. Create .env.local file with the following content:
+# 3. Create environment file
 cat > .env.local <<EOL
 CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
@@ -45,11 +56,11 @@ RAZORPAY_KEY_ID=your_razorpay_key_id
 RAZORPAY_SECRET=your_razorpay_secret
 EOL
 
-# 4. Run the development server
+# 4. Start the app
 npm run dev
 ```
 
-Visit your local app at: [http://localhost:3000](http://localhost:3000)
+Visit: [http://localhost:3000](http://localhost:3000)
 
 ---
 
@@ -62,47 +73,72 @@ Visit your local app at: [http://localhost:3000](http://localhost:3000)
 | Pro    | 100              | ₹49/month     |
 | Team   | Unlimited        | ₹199/month    |
 
-All payments are securely handled using [Razorpay](https://razorpay.com).
+Secure billing is powered by [Razorpay](https://razorpay.com).
 ```
 
 ---
 
-## 📦 Folder Structure
+## 📁 Folder Structure
 
 ```markdown
 /app
-  /dashboard         --> Main user interface
-  /api               --> Reminder & payment APIs
-  /auth              --> Clerk authentication
+  /dashboard         --> User dashboard
+  /auth              --> Auth pages (Clerk)
+  /api               --> Reminder APIs & Payment callbacks
 
-/lib                 --> DB and utility functions
+/lib                 --> Database and utilities
 /components          --> Reusable UI components
 ```
 
 ---
 
-## 📢 Upcoming Features
+## 🔮 Upcoming Features
 
 ```markdown
-- 🧠 Natural Language Input (e.g., “Remind me to drink water every 2 hours”)
+- 🧠 Natural Language Parsing (e.g., “Remind me every 2 hours”)
 - 📱 Mobile App (React Native)
-- 🌐 Multi-language support
-- 🔔 Slack & WhatsApp Reminders
+- 📤 Slack / WhatsApp / Telegram Notification Options
+- 🌍 Multi-language support
 ```
+
+---
+
+## 🖼 Screenshots (Coming Soon)
+
+> Add actual images or GIFs here:
+
+```
+📸 dashboard.png
+📧 email-preview.png
+📊 analytics.png
+```
+
+---
+
+## 📦 Deployment
+
+SnoozeMail is deployed on **[Vercel](https://vercel.com/)**. To deploy your own version:
+
+1. Fork the repo
+2. Push it to GitHub
+3. Import it in [vercel.com](https://vercel.com/new)
+4. Add required environment variables
+5. Done ✅
 
 ---
 
 ## 🤝 Contribution
 
 ```markdown
-SnoozeMail is currently a solo project built by Kishore Kumar.
+SnoozeMail is currently a solo project by Kishore Kumar.
 
-Feel free to fork, clone, and contribute:
-- Raise an issue or bug report
-- Suggest new features
-- Submit a pull request
+You're welcome to:
+- ⭐ Star the repo
+- 📥 Fork & clone
+- 🐛 Report bugs
+- 🚀 Submit pull requests
 
-GitHub Repo: https://github.com/bhhackerkishor/snoozemail
+GitHub: https://github.com/bhhackerkishor/snoozemail
 ```
 
 ---
@@ -110,10 +146,11 @@ GitHub Repo: https://github.com/bhhackerkishor/snoozemail
 ## 📬 Contact
 
 ```markdown
-**Developer**: Kishore Kumar  
+**Author**: Kishore Kumar  
 📧 Email: kishorekumardev@gmail.com  
 🔗 GitHub: https://github.com/bhhackerkishor  
-🔗 LinkedIn: https://linkedin.com/in/kishorekumardev
+🔗 LinkedIn: https://linkedin.com/in/kishorekumardev  
+🔗 Live: https://snoozemail.vercel.app
 ```
 
 ---
@@ -122,5 +159,5 @@ GitHub Repo: https://github.com/bhhackerkishor/snoozemail
 
 ```markdown
 This project is licensed under the MIT License.  
-See `LICENSE` file for more details.
+See the [LICENSE](LICENSE) file for full details.
 ```
